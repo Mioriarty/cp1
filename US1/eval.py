@@ -87,3 +87,15 @@ ax.set_ylabel('lokaler Fehler')
 ax.set_title('Lokaler Fehler')
 fig.tight_layout()
 plt.show()
+
+# mein eigener plot
+xwerte, ableitung = diffquot(fhandle, -5, 5, 0.2)
+analytAbleitung = np.cos(xwerte)
+
+fig, ax = plt.subplots()
+ax.set_title("Vergleich numerische und analytische Ableitung")
+ax.plot(xwerte, analytAbleitung, label="analytisch")
+ax.plot(xwerte, ableitung, label="numerisch")
+ax.legend(loc='best')
+fig.tight_layout()
+plt.show()
