@@ -1,2 +1,8 @@
+# vscode
 .vscode/
 __pycache__/
+
+# tex studio
+*.aux
+*.log
+*.synctex.gz
