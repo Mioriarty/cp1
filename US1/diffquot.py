@@ -34,7 +34,7 @@ def diffquot(fhandle, a, b, h):
         raise ValueError("a must be smaller than b")
 
     # Bestimmung des Definitionsbereichs der Funktion
-    numVals = int((b - a) / h)
+    numVals = abs(int((b - a) / h))
     x = np.linspace(a, b, numVals)
 
     # Evaluierung der Funktion 'fhandle'
@@ -42,7 +42,8 @@ def diffquot(fhandle, a, b, h):
 
     # Berechung der numerischen Ableitung mittels des rechtsseitigen
     # Differenzenquotienten
-    derivative = np.array([ (values[i+1] - values[i]) / h for i in range(numVals - 1) ])
+    # ich mache das so, um die Anzahl an potentiell teuren Funktionsaufruf zu reduizieren
+    derivative = (values[1:] - values[:-1]) / h
 
 
     return (x[:-1], derivative)

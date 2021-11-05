@@ -49,7 +49,8 @@ for h in hs:
     analytAbleitung = np.cos(xwerte)
 
     # berechne den Gesamtfehler für jedes h
-    error = np.sum(h * np.abs(ableitung - analytAbleitung) )
+    # Faktor h, da ich den Durchschnitt aller Fehler Suche, da für unetrschiedliche h unterschiedliche Anzahlen an samples gibt
+    error = h * np.sum(np.abs(ableitung - analytAbleitung) )
     errors.append(error)
 
 
@@ -58,7 +59,7 @@ fig, ax = plt.subplots()
 ax.set_title("Gesamtfehler in Abhängigkeit von h")
 ax.set_xlabel("Quantisierungsabstand h")
 ax.set_ylabel("Gesamtfehler")
-ax.plot(np.array(hs), np.array(errors), label="Fehler")
+ax.plot(hs, np.array(errors), label="Fehler")
 plt.show()
 
 # lokaler Fehler für feste Schrittweiten
