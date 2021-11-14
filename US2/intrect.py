@@ -34,10 +34,13 @@ def intrect(fhandle, a, b, h):
         area, xwerte, stamm_funk = intrect(np.exp, 0, 10, 0.01)
     """
 
+    if(b <= a):
+        raise ValueError("a must be smaller than b")
 
     # Mittelpunkte der Intervalle ermitteln
     # --> Vektor der Intervall-Mittelpunkte durch Verschiebung um h/2
-    xVals = np.arange(a + h, b, h)
+    numVals = abs(int((b - a) / h)) - 1
+    xVals = np.linspace(a + h, b, numVals)
 
     # Funktionswerte an den Intervallmittelpunkten
     yVals = fhandle(xVals - h/2)
@@ -46,7 +49,7 @@ def intrect(fhandle, a, b, h):
     yIntVals = cumsum(yVals) * h
 
     # Berechnung der Fläche
-    area = yIntVals[-1] - yIntVals[0]
+    area = yIntVals[-1] - fhandle(a) * h
 
     # Berechnung der xwerte für Darstellung der Stammfunktion, jeweils am
     # rechten Rand des Teilintervalls

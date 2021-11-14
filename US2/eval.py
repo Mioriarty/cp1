@@ -18,14 +18,6 @@ linArea = 1/2 * 10**2
 quadArea = 1/3 * 10**3
 expArea = np.exp(10) - 1
 
-# test
-fig, ax = plt.subplots()
-area, xVals, yVals = intrect(lambda x : x, 0, 10, 1e-3)
-print(area)
-ax.plot(xVals, yVals)
-plt.show()
-
-
 # Integrationsfehler in Abhängingkeit von der Schrittweite der Teilintervalle
 # logarithmisch äquidistanter Vektor der Schrittweiten
 hs = np.logspace(-4, -1, 400)
@@ -57,11 +49,14 @@ for h in hs:
 # Darstellung als Linienplot
 
 fig, ax = plt.subplots()
+ax.set_title("Integrationsfehler in Abh. vom Stützstellenabstand h")
+ax.set_xscale('log')
 ax.set_yscale('log')
+ax.set_xlabel('Stützstellenabstand h')
+ax.set_ylabel('Integrationsfehler E')
 ax.plot(hs, linErrors, label="f(x) = x")
 ax.plot(hs, quadErrors, label="f(x) = x²")
 ax.plot(hs, expErrors, label="f(x) = exp(x)")
-ax.plot(hs, hs**2.7 * 1e4, label="Control")
 
 
 # Plotbeschriftung
@@ -78,7 +73,7 @@ plt.show()
 b = 4
 
 # linke Intervallgrenze mit verschiedenen Werten
-aas = [0, 0.5, 1, 1.5]
+aas = [0, 0.5, 1, 1.5, 2, 3]
 h = 1e-2
 
 fig, ax = plt.subplots()
@@ -93,4 +88,7 @@ for a in aas:
 
 # Plotbeschriftung für alle Graphen im selben Plot
 ax.legend(loc='best')
+ax.set_title("Stammfunktion in Abh. vom linken Intervallrand a")
+ax.set_xlabel("Parameter x")
+ax.set_ylabel("Funktswert der Stammfunktion F(x)")
 plt.show()
