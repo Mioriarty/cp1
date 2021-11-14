@@ -72,7 +72,7 @@
 		&\in O(h)
 	\end{align*}
 
-	Damit steigt der Fehler $E$ linear mit dem Quantisierungsabstand $h$, wie man in Abbildung 2 sieht.
+	Damit steigt der Fehler $E$ linear mit dem Quantisierungsabstand $h$, wie man in Abbildung 2 sieht. Am Ende sehen wie noch, dass der Fehler extrem ansteigt. Das liegt daran, dass der Abstand der Punkte, die für die Anstiegsberechnung hergenommen werden, so groß wird, dass eine Art Schwung entsteht, also dass die Ableitung extrem falsch wird. Was man auch in Abbildung 3a) sehen kann.
 	
 	Schließlich betrachten wir noch den lokalen Fehler der numerischen Differentation. Dafür sehen wir in Abbildung 3a jeweils den Fehler an einer Stelle für 3 verschiedene Quantisierungsabstände. In Abbildung 3b habe ich zum Vergleich die numerische und analytische Ableitung in einen Graphen geplottet (mit $h = 0,2$).
 	
@@ -83,6 +83,6 @@
 		\subfloat[\centering analytische und numerische Ableitung für $h=0,2$]{{\includegraphics[scale=0.5]{Figure_4} }}
 		\caption{Betrachtung der Lokalen Fehler}
 	\end{figure}
-	In 3a) sieht man, dass die lokale Fehler oszillieren und auch mit wachsendem $h$ linear steigen. Letzteres wissen wir ja schon aus der Abbildung 2. Bleibt noch die Frage, warum der lokale Fehler oszilliert. Dies kann Abbildung 3b) beantworten. Dort erkennt man, dass die numerische Approximation immer leicht nach links verschoben ist. Damit haben Stellen, wo die Ableitung einen kleinen Anstieg hat, natürlich nur einen kleinen lokalen Fehler. (vgl. mit $x=0$) Und an Stellen mit starker Steigung, ist auch der lokale Fehler größer. Da bei $\cos(x)$ diese Stellen oszillieren, tut dies auch der lokale Fehler
+	In 3a) sieht man, dass die lokale Fehler oszillieren und auch mit wachsendem $h$ linear steigen. Außerdem sieht man die Schwebung für $h=3$, die oben beschrieben wurde. Letzteres wissen wir ja schon aus der Abbildung 2. Bleibt noch die Frage, warum der lokale Fehler oszilliert. Dies kann Abbildung 3b) beantworten. Dort erkennt man, dass die numerische Approximation immer leicht nach links verschoben ist. Damit haben Stellen, wo die Ableitung einen kleinen Anstieg hat, natürlich nur einen kleinen lokalen Fehler. (vgl. mit $x=0$) Und an Stellen mit starker Steigung, ist auch der lokale Fehler größer. Da bei $\cos(x)$ diese Stellen oszillieren, tut dies auch der lokale Fehler
 	
 	\end{document}

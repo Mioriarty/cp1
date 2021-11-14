@@ -32,7 +32,7 @@ plt.show()
 
 anzahl_h = 50
 h_min = 0.001
-h_max = 1
+h_max = 3
 
 # äquidistanter Vektor im Intervall [h_min, h_max] der Länge anzahl_h
 hs = np.linspace(h_min, h_max, anzahl_h)
@@ -66,7 +66,7 @@ plt.show()
 
 # überschreibe h erneut
 
-hs = [0.1, 0.3, 0.5]
+hs = [0.1, 1, 3]
 
 fig, ax = plt.subplots()
 
