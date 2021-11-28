@@ -15,7 +15,7 @@ xs = np.linspace(-5, 5, 50)
 ys = np.linspace(-5, 5, 50)
 
 def inRange(p1, p2):
-    EPSILON = 1
+    EPSILON = 0.01
     return (p1[0] - p2[0])**2 + (p1[1] - p2[1])**2 < EPSILON
 
 def getFinalValIndex(x, y):
@@ -34,17 +34,16 @@ def getFinalValIndex(x, y):
         print([x, y], p, val, N)
         return 0
     
-"""
-finalIndices = np.array([[getFinalValIndex(x, y) for y in ys] for x in xs])
 
-fig = plt.figure(figsize=(8,6))
+finalIndices = np.array([[getFinalValIndex(x, y) for x in xs] for y in ys[::-1]])
+
+fig = plt.figure()
 plt.imshow(finalIndices, extent=(-5, 5, -5, 5))
 plt.title("Gefundenes Minimum in Abh. vom Startwert")
 plt.xlabel("x - Koordinate")
 plt.ylabel("y - Koordinate")
 plt.show()
 
-"""
 
 Ns = np.arange(10, 950, 1)
 
@@ -57,22 +56,14 @@ ax.set_yscale("log")
 ax.set_xlabel("Anzahl der maximalen Schritten")
 ax.set_ylabel("Abstand vom Minimum")
 ax.plot(Ns, dists)
-ax.plot(Ns, 1-Ns)
 
 plt.show()
-"""
-pointsInPath = [ simplex(himmelblau, [0.3061224489795915, -0.1020408163265305], n, 1e-15)[0] for n in range(40) ] # bis 116
 
-from matplotlib.path import Path
-import matplotlib.patches as patches
-
-fig, ax = plt.subplots()
-path = Path(pointsInPath, [Path.MOVETO] * len(pointsInPath))
-patch = patches.PathPatch(path, lw=2)
-ax.set_xlim(-5, 5)
-ax.set_ylim(-5, 5)
-ax.add_patch(patch)
+fig = plt.figure()
+yVals = np.array([[himmelblau(np.array([x, y]))**(0.6) for x in xs] for y in ys[::-1]])
+plt.imshow(yVals, extent=(-5, 5, -5, 5), cmap="cividis")
+plt.title("Höhenkarte der Himmelblaufunktion")
+plt.xlabel("x - Koordinate")
+plt.ylabel("y - Koordinate")
+plt.colorbar()
 plt.show()
-
-
-"""
