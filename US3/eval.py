@@ -42,6 +42,7 @@ plt.imshow(finalIndices, extent=(-5, 5, -5, 5))
 plt.title("Gefundenes Minimum in Abh. vom Startwert")
 plt.xlabel("x - Koordinate")
 plt.ylabel("y - Koordinate")
+plt.colorbar()
 plt.show()
 
 

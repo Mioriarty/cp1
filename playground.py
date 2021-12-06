@@ -1,7 +1,6 @@
-from numpy import linspace, sin, pi
+import numpy
 
-h = 0.001
-x = linspace(0, 2*pi, int(2*pi/h))
-y = sin(x)
+l = numpy.array([[1, 2], [3, 4], [5, 6]])
 
-print(y)
+print(l)
+print(l[...,0])

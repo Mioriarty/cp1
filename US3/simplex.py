@@ -109,8 +109,7 @@ def simplex(fhandle, x_start, N_max, p):
         
 
 def calcVariance(values : list) -> float:
-    avg = sum(values) / len(values)
-    return np.sqrt(1/4 * sum((y - avg)**2 for y in values))
+    return np.std(values)
 
 def calcSimplexSize(simplex : list) -> float:
     return abs(simplex[0][0] * (simplex[1]-simplex[2])[1] + simplex[1][0] * (simplex[2] - simplex[0])[1] + simplex[2][0] * (simplex[0] - simplex[1])[1]) / 2
