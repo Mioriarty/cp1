@@ -70,7 +70,7 @@
 		\caption{Berechnungsdauer $t$ in Abhängigkeit von der Matrixgröße $N$}
 	\end{wrapfigure}
 	Meine Behauptung, dass die LU-Zerlegung $O(n^3)$ dauert, kann man sehr schön anhand der Abbildung 1 verifizieren. Dort ist die Berechnungsdauer $t$ von der LU-Zerlegung in Abhängigkeit von der Matrixgröße $N$ (bedeutet, dass immer $N\times N$ - Matrizen zerlegt werden) abgezeichnet. Es zeigt sich, dass die gemessenen Zeiten sehr gut proportional zu $N^3$ ist. Der orangene Graph ist um genau zu sein
-	$$t(N) = 2,5 \cdot 10^{-7} \cdot N^3$$
-	Das $O(n^3)$ Verhalten kommt daher, dass für jede Spalte durch im Mittel durch die Hälfte aller Zeilen und dann nochmal im Mittel die Hälfte aller Spalten iteriert werden muss.
+	$$t(N) = 2.5 \cdot 10^{-7} \cdot N^3$$
+	Das $O(n^3)$ Verhalten kommt daher, dass für jede Spalte im Mittel durch die Hälfte aller Zeilen und dann nochmal im Mittel die Hälfte aller Spalten iteriert werden muss.
 
 \end{document}

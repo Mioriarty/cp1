@@ -37,7 +37,7 @@ def elimination(L, U, b):
         raise ValueError("L and U has to have the same shape")
     
     if L.shape[0] != b.shape[0]:
-        raise ValueError("The ")
+        raise ValueError("The inhomogenity has to be the same size as the matrices")
 
     n = L.shape[0]
 
@@ -88,6 +88,6 @@ def myLU(A):
             U[i, j] = 0
 
             for k in range(j+1, n):
-                U[i, k] = U[i, k] - L[i, j]* U[j, k]
+                U[i, k] = U[i, k] - L[i, j] * U[j, k]
 
     return L, U
