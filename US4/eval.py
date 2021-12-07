@@ -21,6 +21,7 @@ ingredients = {
 
 # Beispiel 1: Glühweinproduktion
 # Zerlege Matrix A
+
 L, U = myLU(A)
 
 # Berechne für jede Glühweinzutat die nötige Menge an Grundstoffen
@@ -31,28 +32,33 @@ for n in range(1, 5):
         sol = elimination(L, U, n * np.array(quantities))
         print(f"{name}: C{sol[0]} H{sol[1]} O{sol[2]}")
 
+
 # Beispiel 2: Laufzeit der LU-Zerlegung in Abhängigkeit von der Matrixgröße
-ns = np.arange(2, 80, 1)
+ns = np.arange(2, 50, 1)
 times = np.zeros(len(ns))
-"""
+
 def calcTime(i):
     A = np.random.rand(ns[i], ns[i])
     start = time.perf_counter()
     myLU(A)
-    times[i] = (time.perf_counter() - start) / 10
+    times[i] = (time.perf_counter() - start)
     print(ns[i])
 
 import multiprocessing.dummy as mp
-p = mp.Pool(4)
+p = mp.Pool(8)
 p.map(calcTime, range(len(ns)))
 p.close()
 p.join()
-    """
+
 
 # Darstellung
 fig, ax = plt.subplots()
 ax.set_title("Berechnungsdauer in Abh. von der Matrixgröße")
-ax.set_xlabel("Größe n der n x n - Matrix")
-ax.set_ylabel("")
-ax.plot(ns, times)
+ax.set_xlabel("Matrixgröße N")
+ax.set_ylabel("Berechnungsdauer t in s")
+ax.plot(ns, times, label="Gemessene t(N)")
+
+cube = lambda x : 2.5e-7*x**3
+ax.plot(ns[3:], cube(ns[3:]), label="t(N) ~ N³")
+ax.legend(loc='best')
 plt.show()

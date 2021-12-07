@@ -44,7 +44,7 @@ def elimination(L, U, b):
     # Vorwärtselimination
     y = np.zeros(n)
     for i in range(n):
-        y[i] = b[i] - sum(L[i, j] * y[j] for j in range(i-1))
+        y[i] = b[i] - sum(L[i, j] * y[j] for j in range(i))
 
     # Rückwärtselimination
     x = np.zeros(n)
